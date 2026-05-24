@@ -1,0 +1,14 @@
+services:
+  spring4shell-lab:
+    image: vulhub/spring-framework:5.3.17
+    networks:
+      - agentsec_target
+    ports:
+      - "8093:8080"
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  agentsec_target:
+    internal: true
+

@@ -1,0 +1,25 @@
+{
+  "id": "vulhub-spring4shell",
+  "name": "Vulhub Spring4Shell",
+  "type": "vulhub",
+  "description": "Vulhub-style metadata entry for local Spring4Shell training.",
+  "compose_file": "infra/scenarios/vulhub/spring4shell/docker-compose.yml",
+  "service_name": "spring4shell-lab",
+  "internal_url": "http://spring4shell-lab:8080",
+  "mapped_url": "http://localhost:8093",
+  "default_credentials": {},
+  "healthcheck": {
+    "path": "/",
+    "expected_status": 200
+  },
+  "tags": ["vulhub", "spring", "java", "rce-training", "local-only"],
+  "owasp": ["A03:2021-Injection", "A06:2021-Vulnerable and Outdated Components"],
+  "cwe": ["CWE-94", "CWE-502"],
+  "attack": ["T1190"],
+  "log_sources": ["container:spring4shell-lab", "java-app", "agent-tool-events"],
+  "scoring": {
+    "expected_findings": ["framework fingerprint", "dangerous binding hypothesis"],
+    "success_conditions": ["target reachable", "finding generated"]
+  }
+}
+

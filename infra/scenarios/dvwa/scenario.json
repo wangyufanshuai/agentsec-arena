@@ -1,0 +1,28 @@
+{
+  "id": "dvwa",
+  "name": "DVWA Local Range",
+  "type": "dvwa",
+  "description": "Damn Vulnerable Web Application target for local web security training.",
+  "compose_file": "infra/scenarios/dvwa/docker-compose.yml",
+  "service_name": "dvwa",
+  "internal_url": "http://dvwa",
+  "mapped_url": "http://localhost:8081",
+  "default_credentials": {
+    "username": "admin",
+    "password": "password"
+  },
+  "healthcheck": {
+    "path": "/login.php",
+    "expected_status": 200
+  },
+  "tags": ["web", "php", "training", "local-only"],
+  "owasp": ["A01:2021-Broken Access Control", "A03:2021-Injection"],
+  "cwe": ["CWE-89", "CWE-79"],
+  "attack": ["T1595", "T1190"],
+  "log_sources": ["container:dvwa", "apache-access", "agent-tool-events"],
+  "scoring": {
+    "expected_findings": ["route discovery", "form discovery", "injection hypothesis"],
+    "success_conditions": ["target reachable", "login route observed", "finding generated"]
+  }
+}
+

@@ -1,0 +1,22 @@
+[project]
+name = "agentsec-arena-api"
+version = "0.1.0"
+description = "FastAPI backend for AgentSec Arena"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115.0",
+  "uvicorn[standard]>=0.30.0",
+  "pydantic>=2.8.0",
+  "pyyaml>=6.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.2.0",
+  "httpx>=0.27.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+

@@ -1,0 +1,15 @@
+services:
+  juice-shop:
+    image: bkimminich/juice-shop:latest
+    container_name: agentsec-juice-shop
+    networks:
+      - agentsec_target
+    ports:
+      - "8082:3000"
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  agentsec_target:
+    internal: true
+

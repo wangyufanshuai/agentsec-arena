@@ -1,0 +1,25 @@
+{
+  "id": "juice-shop",
+  "name": "OWASP Juice Shop Local Range",
+  "type": "juice-shop",
+  "description": "OWASP Juice Shop target for local web vulnerability evaluation.",
+  "compose_file": "infra/scenarios/juice-shop/docker-compose.yml",
+  "service_name": "juice-shop",
+  "internal_url": "http://juice-shop:3000",
+  "mapped_url": "http://localhost:8082",
+  "default_credentials": {},
+  "healthcheck": {
+    "path": "/",
+    "expected_status": 200
+  },
+  "tags": ["web", "node", "owasp", "local-only"],
+  "owasp": ["A01:2021-Broken Access Control", "A03:2021-Injection", "A07:2021-Identification and Authentication Failures"],
+  "cwe": ["CWE-89", "CWE-200", "CWE-287"],
+  "attack": ["T1595", "T1190", "T1110"],
+  "log_sources": ["container:juice-shop", "node-app", "agent-tool-events"],
+  "scoring": {
+    "expected_findings": ["route discovery", "login surface", "basket or search injection hypothesis"],
+    "success_conditions": ["target reachable", "finding generated"]
+  }
+}
+

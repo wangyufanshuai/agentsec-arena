@@ -1,0 +1,15 @@
+services:
+  dvwa:
+    image: vulnerables/web-dvwa:latest
+    container_name: agentsec-dvwa
+    networks:
+      - agentsec_target
+    ports:
+      - "8081:80"
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  agentsec_target:
+    internal: true
+
